@@ -1,0 +1,121 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block header %}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('dashboard') }}">
+                    <span class="fa fa-dashboard"></span>
+                    {{ logo }}
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ path('home') }}" target="_blank">
+                            <span class="fa fa-home"></span>&nbsp;На сайт
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('dashboard_logout') }}">
+                            <span class="fa fa-sign-out"></span>&nbsp;Выход
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-3"> <!-- required for floating -->
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tabs-left">
+                        <li class="active">
+                            <a href="#tour" data-toggle="tab">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Афиша
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#photo" data-toggle="tab">
+                                <i class="fa fa-camera" aria-hidden="true"></i>&nbsp;Фото
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contacts" data-toggle="tab">
+                                <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;Контакты
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#rider" data-toggle="tab">
+                                <i class="fa fa-list" aria-hidden="true"></i>&nbsp;Райдер
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="tour">
+
+                            {% include 'dashboard/tour/tour.twig' %}
+
+                            <button type="button" class="btn btn-info" data-toggle="modal"
+                                    data-target="#addTour">
+                                <span class="fa fa-plus"></span>&nbsp;Добавить
+                            </button>
+
+                        </div>
+
+                        <div class="tab-pane" id="photo">
+
+                            {% include 'dashboard/photos/albums.twig' %}
+
+                            <button type="button" class="btn btn-info" data-toggle="modal"
+                                    data-target="#addAlbum">
+                                <span class="fa fa-plus"></span>&nbsp;Добавить
+                            </button>
+
+                        </div>
+
+                        <div class="tab-pane" id="contacts">
+                            {% include 'dashboard/contacts/contacts.twig' %}
+                        </div>
+
+                        <div class="tab-pane" id="rider">
+                            {% include 'dashboard/rider/rider.twig' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--MODALS-->
+    {% include 'dashboard/tour/modals/add_tour.twig' %}
+    {% include 'dashboard/photos/modals/add_album.twig' %}
+    {% include 'dashboard/rider/modals/add_rider.twig' %}
+    {% include 'dashboard/contacts/modals/add_contact.twig' %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

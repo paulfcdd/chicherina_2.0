@@ -1,0 +1,25 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="tour">
+        <div class="container">
+            {% for tour in tours %}
+                <div class="row">
+                    <div class="col-lg-2 col-xs-3 col-sm-2 col-md-2 date">
+                        <p>{{ tour.date }}</p>
+                    </div>
+                    <div class="col-lg-7 col-xs-5 col-sm-8 col-md-8 city">
+                        <p class="center-block">{{ tour.city }}</p>
+                    </div>
+                    <div class="col-lg-3 col-xs-4 col-sm-2 col-md-2 location text-right">
+                        <p>{{ tour.location }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

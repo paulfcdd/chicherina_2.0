@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('fonts/fa/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/vertical_tabs/bootstrap.vertical-tabs.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
+</head>
+<body>
+<div class="wrapper">
+    {% block header %}
+        {{ render(url('header')) }}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+        {{ render(url('footer')) }}
+    {% endblock %}
+</div>
+</body>
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-tooltip="tooltip"]').tooltip();
+    });
+</script>
+<script src="{{ asset('bower_components/moment/locale/ru.js') }}"></script>
+<script src="{{ asset('js/dashboard.js') }}"></script>
+<script src="{{ asset('js/photos.js') }}"></script>
+</html>

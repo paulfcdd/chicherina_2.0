@@ -1,0 +1,28 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="photos">
+        <div class="container">
+            <div class="row">
+                {% for photo in photos %}
+                    <div class="col-lg-3 col-xs-12 col-sm-12 col-md-6">
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#{{ photo.id }}"
+                           onclick="photoId('{{ photo.id }}')"
+                           class="thumbnail">
+                            <div class="image">
+                                <img src="{{ asset(photo.name) }}" class="img img-responsive full-width"/>
+                            </div>
+                        </a>
+                    </div>
+                    {% include 'modals/photos/photoViewer.twig' with{'id':photo.id, 'photos':photos}%}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

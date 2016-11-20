@@ -10,9 +10,10 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $app = require_once __DIR__ . '/../app/kernel.php';
+$app->boot();
 $app['debug'] = true;
 require_once __DIR__ . '/../src/service/service.php';
-require_once __DIR__ . '/../src/controller/actions.php';
-require_once __DIR__ . '/../src/controller/controller.php';
-$app->boot();
+//require_once __DIR__ . '/../src/controller/actions.php';
+//require_once __DIR__ . '/../src/controller/controller.php';
+require_once __DIR__ . '/../src/controller/autoload.php';
 $app->run();
