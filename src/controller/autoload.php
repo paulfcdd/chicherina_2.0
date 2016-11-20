@@ -1,6 +1,7 @@
 <?php
 use Silexpack\Service\Service;
 
+
 $service = new Service($app);
 
 $dir = __DIR__;

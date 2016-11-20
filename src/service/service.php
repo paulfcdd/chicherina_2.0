@@ -51,4 +51,9 @@ class Service
 		$tableName = trim($tableName);
 		return $tableName;
 	}
+
+
+//	public function queryBuilder(){
+//		$qb = new \stdClass();
+//	}
 }

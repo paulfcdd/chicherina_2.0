@@ -10,6 +10,7 @@ config:
     mailer_password: null
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt
+
     root.pattern: '^/root'
     root.login_path: '/login'
     root.check_path: '/root/login_check'

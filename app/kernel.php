@@ -24,9 +24,9 @@ $app
             'charset' => 'utf8mb4',
         ],
     ])
-    ->register(new SessionServiceProvider(), [
+    ->register(new SecurityServiceProvider(), [
         'security.firewalls' => [
-            'root' => array(
+            'root' => [
                 'pattern' => $app['config']['config']['root.pattern'],
                 'form' => array(
                     'login_path' => $app['config']['config']['root.login_path'],
@@ -44,7 +44,30 @@ $app
                     'logout_path' => $app['config']['config']['root.logout_path'],
                     'invalidate_session' => true
                 ],
-            ),
+            ],
+        ],
+    ])
+//    ->register(new SessionServiceProvider(), [
+//        'security.firewalls' => [
+//            'root' => array(
+//                'pattern' => $app['config']['config']['root.pattern'],
+//                'form' => array(
+//                    'login_path' => $app['config']['config']['root.login_path'],
+//                    'check_path' => $app['config']['config']['root.check_path'],
+//                    'always_use_default_target_path' => true,
+//                    'default_target_path' => $app['config']['config']['root.redirect_path']
+//                ),
+//                'users' => array(
+//                    $app['config']['config']['root.username'] => array(
+//                        $app['config']['config']['root.role'],
+//                        password_hash($app['config']['config']['root.password'], PASSWORD_BCRYPT)
+//                    ),
+//                ),
+//                'logout' => [
+//                    'logout_path' => $app['config']['config']['root.logout_path'],
+//                    'invalidate_session' => true
+//                ],
+//            ),
 //            'admin' => [
 //                'pattern' => '^/dashboard',
 //                'form' => [
@@ -61,8 +84,8 @@ $app
 //                    return new UserProvider($app['db']);
 //                }
 //            ],
-        ],
-    ])
+//        ],
+//    ])
     ->register(new AssetServiceProvider(), [
         'assets.version_format' => '%s?version=%s',
         'assets.named_packages' => array(
