@@ -10,6 +10,7 @@ use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Services\UserProvider;
 
 $app = new Application();
 $app
@@ -44,6 +45,22 @@ $app
                     'logout_path' => $app['config']['config']['root.logout_path'],
                     'invalidate_session' => true
                 ],
+            ],
+            'admin' => [
+                'pattern' => '^/dashboard',
+                'form' => [
+                    'login_path' => '/admin',
+                    'check_path' => '/dashboard/login_check',
+                    'always_use_default_target_path' => true,
+                    'default_target_path' => '/dashboard',
+                ],
+                'logout' => [
+                    'logout_path' => '/dashboard/logout',
+                    'invalidate_session' => true
+                ],
+                'users' => function () use ($app) {
+                    return new UserProvider($app['db']);
+                }
             ],
         ],
     ])

@@ -68,6 +68,11 @@
                                 <i class="fa fa-list" aria-hidden="true"></i>&nbsp;Райдер
                             </a>
                         </li>
+						<li>
+                            <a href="#pages" data-toggle="tab">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;Страницы
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -103,6 +108,9 @@
 
                         <div class="tab-pane" id="rider">
                             {% include 'dashboard/rider/rider.twig' %}
+                        </div>
+						<div class="tab-pane" id="pages">
+                            {% include 'dashboard/pages/pages.twig' %}
                         </div>
                     </div>
                 </div>

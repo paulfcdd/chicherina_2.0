@@ -1,0 +1,103 @@
+{#<pre>#}
+	{#{{ dump(pages) }}#}
+{#</pre>#}
+
+{% if pages == null %}
+	<div class="alert alert-warning">
+		<strong>Внимание!</strong> Нет добавленных страниц
+	</div>
+{% else %}
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>URL</th>
+			<th>Имя для роутинга</th>
+			<th>Имя шаблона</th>
+			<th>Имя в меню</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Keywords</th>
+			<th>Скрыть в меню</th>
+			<th></th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for page in pages %}
+			<tr>
+				<td>{{ page.pattern }}</td>
+				<td>{{ page.routeName }}</td>
+				<td>{{ page.pageName }}</td>
+				<td>{{ page.menuName }}</td>
+				<td>{{ page.title }}</td>
+				<td>{{ page.description }}</td>
+				<td>{{ page.keywords }}</td>
+				<td>
+					{% if page.isHidden == 1 %}
+						<input type="checkbox" value="isHidden" checked>
+					{% else %}
+						<input type="checkbox" value="isHidden">
+					{% endif %}
+				</td>
+				<td>
+					<button type="button"
+							data-target="#{{ page.id }}"
+							class="btn btn-success"
+							data-toggle="modal"
+							data-tooltip="tooltip" title="Редактировать">
+						<span class="fa fa-edit"></span>
+					</button>
+					{#{% include 'dashboard/tour/modals/edit_tour.twig' with {#}
+					{#'id': tour.id,#}
+					{#'date': tour.date,#}
+					{#'city': tour.city,#}
+					{#'location': tour.location#}
+					{#} %}#}
+				</td>
+				<td><form action="{{ path('delete_tour') }}" method="post">
+						<button type="submit"
+								class="btn btn-danger"
+								name="tour_id"
+								value="{{ page.id }}"
+								data-tooltip="tooltip" title="Удалить">
+							<span class="fa fa-trash"></span>
+						</button>
+					</form></td>
+			</tr>
+		{% endfor %}
+		{#{% for tour in tours %}#}
+			{#<tr>#}
+				{#<td>{{ tour.date }}</td>#}
+				{#<td>{{ tour.city }}</td>#}
+				{#<td>{{ tour.location }}</td>#}
+				{#<td>#}
+					{#<button type="button"#}
+							{#class="btn btn-success"#}
+							{#data-toggle="modal"#}
+							{#data-target="#{{ tour.id }}"#}
+							{#data-tooltip="tooltip" title="Редактировать">#}
+						{#<span class="fa fa-edit"></span>#}
+					{#</button>#}
+					{#{% include 'dashboard/tour/modals/edit_tour.twig' with {#}
+					{#'id': tour.id,#}
+					{#'date': tour.date,#}
+					{#'city': tour.city,#}
+					{#'location': tour.location#}
+					{#} %}#}
+				{#</td>#}
+				{#<td>#}
+					{#<form action="{{ path('delete_tour') }}" method="post">#}
+						{#<button type="submit"#}
+								{#class="btn btn-danger"#}
+								{#name="tour_id"#}
+								{#value="{{ tour.id }}"#}
+								{#data-tooltip="tooltip" title="Удалить">#}
+							{#<span class="fa fa-trash"></span>#}
+						{#</button>#}
+					{#</form>#}
+				{#</td>#}
+			{#</tr>#}
+		{#{% endfor %}#}
+		</tbody>
+	</table>
+{% endif %}

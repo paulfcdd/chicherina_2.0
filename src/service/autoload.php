@@ -1,8 +1,4 @@
 <?php
-use Services\Service;
-
-$service = new Service($app);
-
 $dir = __DIR__;
 $files = scandir($dir);
 
