@@ -1,6 +1,9 @@
 <?php
 use Services\Service;
 
+/**
+ * @var Service $service
+ */
 $service = new Service($app);
 
 $dir = __DIR__;

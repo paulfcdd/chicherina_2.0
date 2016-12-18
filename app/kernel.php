@@ -64,45 +64,6 @@ $app
             ],
         ],
     ])
-//    ->register(new SessionServiceProvider(), [
-//        'security.firewalls' => [
-//            'root' => array(
-//                'pattern' => $app['config']['config']['root.pattern'],
-//                'form' => array(
-//                    'login_path' => $app['config']['config']['root.login_path'],
-//                    'check_path' => $app['config']['config']['root.check_path'],
-//                    'always_use_default_target_path' => true,
-//                    'default_target_path' => $app['config']['config']['root.redirect_path']
-//                ),
-//                'users' => array(
-//                    $app['config']['config']['root.username'] => array(
-//                        $app['config']['config']['root.role'],
-//                        password_hash($app['config']['config']['root.password'], PASSWORD_BCRYPT)
-//                    ),
-//                ),
-//                'logout' => [
-//                    'logout_path' => $app['config']['config']['root.logout_path'],
-//                    'invalidate_session' => true
-//                ],
-//            ),
-//            'admin' => [
-//                'pattern' => '^/dashboard',
-//                'form' => [
-//                    'login_path' => '/admin',
-//                    'check_path' => '/dashboard/login_check',
-//                    'always_use_default_target_path' => true,
-//                    'default_target_path' => '/dashboard',
-//                ],
-//                'logout' => [
-//                    'logout_path' => '/dashboard/logout',
-//                    'invalidate_session' => true
-//                ],
-//                'users' => function () use ($app) {
-//                    return new UserProvider($app['db']);
-//                }
-//            ],
-//        ],
-//    ])
     ->register(new AssetServiceProvider(), [
         'assets.version_format' => '%s?version=%s',
         'assets.named_packages' => array(

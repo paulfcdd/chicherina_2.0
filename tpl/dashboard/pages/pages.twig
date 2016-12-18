@@ -1,7 +1,3 @@
-{#<pre>#}
-	{#{{ dump(pages) }}#}
-{#</pre>#}
-
 {% if pages == null %}
 	<div class="alert alert-warning">
 		<strong>Внимание!</strong> Нет добавленных страниц
@@ -13,7 +9,6 @@
 			<th>URL</th>
 			<th>Имя для роутинга</th>
 			<th>Имя шаблона</th>
-			<th>Имя в меню</th>
 			<th>Title</th>
 			<th>Description</th>
 			<th>Keywords</th>
@@ -28,7 +23,6 @@
 				<td>{{ page.pattern }}</td>
 				<td>{{ page.routeName }}</td>
 				<td>{{ page.pageName }}</td>
-				<td>{{ page.menuName }}</td>
 				<td>{{ page.title }}</td>
 				<td>{{ page.description }}</td>
 				<td>{{ page.keywords }}</td>

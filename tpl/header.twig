@@ -12,22 +12,17 @@
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav hidden-xs hidden-sm pull-right">
 				{% for page in pages %}
-					{% if page.isHidden == 0 %}
-						<li><a href="{{ path(page.routeName) }}">{{ page.menuName }}</a></li>
-					{% endif %}
+                    {% if page.isHidden == 0 %}
+						<li><a href="{{ path(page.routeName) }}">{{ page.pageName }}</a></li>
+                    {% endif %}
 				{% endfor %}
-				{#<li><a href="{{ path('tour') }}">Афиша</a></li>#}
-				{#<li><a href="{{ path('band') }}">Группа</a></li>#}
-				{#<li><a href="{{ path('photos') }}">Фото</a></li>#}
-				{#<li><a href="{{ path('contacts') }}">Контакты</a></li>#}
-				{#<li><a href="{{ path('rider') }}">Райдер</a></li>#}
 			</ul>
 			<ul class="nav navbar-nav hidden-lg hidden-md">
-				{% for page in pages %}
-					{% if page.isHidden == 0 %}
-						<li><a href="{{ path(page.routeName) }}">{{ page.menuName }}</a></li>
-					{% endif %}
-				{% endfor %}
+                {% for page in pages %}
+                    {% if page.isHidden == 0 %}
+						<li><a href="{{ path(page.routeName) }}">{{ page.pageName }}</a></li>
+                    {% endif %}
+                {% endfor %}
 				{#<li><a href="{{ path('tour') }}">Афиша</a></li>#}
 				{#<li><a href="{{ path('band') }}">Группа</a></li>#}
 				{#<li><a href="{{ path('photos') }}">Фото</a></li>#}
