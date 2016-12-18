@@ -1,4 +1,5 @@
 .idea/**
 logs/
 vendor/
-config/config.yml
+config/parameters.yml
+bower_components/**

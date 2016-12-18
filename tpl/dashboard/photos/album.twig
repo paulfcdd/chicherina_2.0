@@ -65,7 +65,7 @@
                     <div class="col-lg-2 col-xs-12">
                         <div class="thumbnail gallery">
                             <div class="thumbnail photo-caption">
-                                <img src="{{ asset(photo.name) }}">
+                                <img src="{{ asset(photo.path) }}">
                             </div>
                             <div class="caption">
                                 <div class="row">
@@ -75,7 +75,7 @@
                                         <form method="post" action="{{ path('delete_photo') }}">
                                             <input name="albumId" value="{{ id }}" hidden>
                                             <button class="btn btn-danger"
-                                                    name="deletePhoto" type="submit" value="{{ photo.id }}">
+                                                    name="photoId" type="submit" value="{{ photo.id }}">
                                                 <span class="fa fa-trash"></span>
                                             </button>
                                         </form>

@@ -19,7 +19,7 @@ $app
 			'title' => 'Админинстрирование сайта',
 			'logo' => 'Управление сайтом',
 			'tours' => $service->selectAll('tours'),
-			'albums' => $service->selectAll('albums'),
+			'albums' => $service->selectAll('albums_test'),
 			'riders' => $service->selectAll('rider'),
 			'contacts' => $service->selectAll('contacts'),
 			'pages' => $service->selectAll('pages'),

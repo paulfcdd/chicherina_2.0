@@ -8,43 +8,44 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 $request = new Request();
 
 $app
-	->get('/афиша', function () use ($app, $service) {
-		$tours = $service->selectAll('tours');
-		return $app['twig']->render('tour.twig', [
-			'tours' => $tours,
-			'title' => 'Афиша',
-		]);
-	})
-	->bind('tour');
+    ->get('/афиша', function () use ($app, $service) {
+        return $app['twig']->render('tour.twig', [
+            'tours' => $service->selectAll('tours'),
+            'title' => $service->getMetaData('tour')['title'],
+            'description' => $service->getMetaData('tour')['description'],
+            'keywords' => $service->getMetaData('tour')['keywords'],
+        ]);
+    })
+    ->bind('tour');
 
 $app
-	->post('/add_tour', function () use ($app, $request) {
+    ->post('/add_tour', function () use ($app, $request) {
 
-		try {
-			$app['db']->insert(
-				'tours', [
-				'date' => trim($request->request->get('date')),
-				'city' => trim($request->request->get('city')),
-				'location' => trim($request->request->get('place')),
-			]);
-			$status = [
-				'type' => 'success',
-				'message' => 'Концерт успешно добавлен',
-			];
-			return new JsonResponse($status);
+        try {
+            $app['db']->insert(
+                'tours', [
+                'date' => trim($request->request->get('date')),
+                'city' => trim($request->request->get('city')),
+                'location' => trim($request->request->get('place')),
+            ]);
+            $status = [
+                'type' => 'success',
+                'message' => 'Концерт успешно добавлен',
+            ];
+            return new JsonResponse($status);
 
-		} catch (\Exception $e) {
-			$status = [
-				'type' => 'success',
-				'message' => $e->getMessage(),
-			];
-			return new JsonResponse($status);
-		}
-	})
-	->bind('add_tour');
+        } catch (\Exception $e) {
+            $status = [
+                'type' => 'success',
+                'message' => $e->getMessage(),
+            ];
+            return new JsonResponse($status);
+        }
+    })
+    ->bind('add_tour');
 
 $app
-	->post('/delete_tour', function () use ($app, $request) {
+    ->post('/delete_tour', function () use ($app, $request) {
         if ($request->isMethod('POST')) {
             $id = $request->request->get('tour_id');
             try {
@@ -57,33 +58,33 @@ $app
                 throw new Exception($e->getMessage());
             }
         }
-	})
-	->bind('delete_tour');
+    })
+    ->bind('delete_tour');
 
 $app
-	->post('/edit_tour', function () use ($app, $service, $request) {
+    ->post('/edit_tour', function () use ($app, $service, $request) {
 
-		try {
-			$app['db']->update(
-				'tours', [
-				'date' => trim($request->request->get('date')),
-				'city' => trim($request->request->get('city')),
-				'location' => trim($request->request->get('place')),
-			], [
-				'id' => trim($request->request->get('id')),
-			]);
-			$status = [
-				'type' => 'success',
-				'message' => 'Концерт успешно изменен',
-			];
-			return new JsonResponse($status);
+        try {
+            $app['db']->update(
+                'tours', [
+                'date' => trim($request->request->get('date')),
+                'city' => trim($request->request->get('city')),
+                'location' => trim($request->request->get('place')),
+            ], [
+                'id' => trim($request->request->get('id')),
+            ]);
+            $status = [
+                'type' => 'success',
+                'message' => 'Концерт успешно изменен',
+            ];
+            return new JsonResponse($status);
 
-		} catch (\Exception $e) {
-			$status = [
-				'type' => 'success',
-				'message' => $e->getMessage(),
-			];
-			return new JsonResponse($status);
-		}
-	})
-	->bind('edit_tour');
+        } catch (\Exception $e) {
+            $status = [
+                'type' => 'success',
+                'message' => $e->getMessage(),
+            ];
+            return new JsonResponse($status);
+        }
+    })
+    ->bind('edit_tour');

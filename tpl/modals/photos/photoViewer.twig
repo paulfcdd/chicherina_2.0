@@ -9,10 +9,10 @@
             {% for photo in photos %}
                 {% if photo.id == id %}
             <div class="modal-body">
-                    <img class="img-responsive" src="{{ asset(photo.name) }}">
+                    <img class="img-responsive" src="{{ asset(photo.path) }}">
             </div>
             <div class="modal-footer">
-                <a href="{{ asset(photo.name) }}" target="_blank">
+                <a href="{{ asset(photo.path) }}" target="_blank">
                     <i class="fa fa-download"></i>&nbsp;Открыть оригинал
                 </a>
             </div>

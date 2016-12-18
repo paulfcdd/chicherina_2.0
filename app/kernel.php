@@ -14,7 +14,7 @@ use Services\UserProvider;
 
 $app = new Application();
 $app
-    ->register(new YamlConfigServiceProvider(__DIR__ . '/../config/config.yml'))
+    ->register(new YamlConfigServiceProvider(__DIR__ . '/../config/parameters.yml'))
     ->register(new DoctrineServiceProvider(), [
         'db.options' => [
             'driver' => $app['config']['config']['driver'],
