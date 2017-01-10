@@ -1,10 +1,16 @@
 <?php
 use Services\Service;
+use Intervention\Image\ImageManager;
 
 /**
  * @var Service $service
  */
 $service = new Service($app);
+
+/**
+ * @var ImageManager $image
+ */
+$image = new ImageManager();
 
 $dir = __DIR__;
 $files = scandir($dir);

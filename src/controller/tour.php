@@ -46,7 +46,10 @@ $app
 
 $app
     ->post('/delete_tour', function () use ($app, $request) {
-        if ($request->isMethod('POST')) {
+
+//    	var_dump($request->request->get('id'));
+//    	die;
+		if ($request->isMethod('GET')) {
             $id = $request->request->get('tour_id');
             try {
                 $app['db']->delete('tours', ['id' => $id]);

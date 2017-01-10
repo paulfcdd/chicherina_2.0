@@ -18,7 +18,8 @@
 		"rpodwika/yaml-config-service-provider": "~1.0.1",
 		"doctrine/dbal": "~2.5.5",
 		"symfony/security": "~3.1.5",
-		"incenteev/composer-parameter-handler": "~2.0"
+		"incenteev/composer-parameter-handler": "~2.0",
+		"intervention/image": "~2.3.8"
 	},
 	"scripts": {
 		"post-install-cmd": [

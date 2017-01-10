@@ -2,6 +2,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+
 $app
     ->get('/фото', function () use ($app, $service) {
         $albumsFetched = $service->selectAll('albums_test');
@@ -65,7 +66,6 @@ $app
                 $app['db']->delete('photos_test', [
                     'id' => $request->request->get('photoId'),
                 ]);
-//                die;
                 unlink(__DIR__ . '/../../web' . $file['path']);
                 return $app->redirect($app["url_generator"]->generate("album", ['id' => $request->request->get('albumId')]));
             } catch (\Exception $e) {
